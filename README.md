@@ -47,6 +47,16 @@ A validacao final de conforto, performance, input, legibilidade e usabilidade in
 7. Abra `Assets/_Project/Scenes/AppStart.unity`.
 8. Pressione Play.
 
+## Ambiente local
+
+Rode a checagem local:
+
+```powershell
+.\tools\check-dev-env.ps1
+```
+
+Veja detalhes em [docs/local-development.md](docs/local-development.md).
+
 ## Como adicionar videos 360
 
 1. Tenha certeza de que o video e autorizado para uso no projeto.
@@ -90,9 +100,6 @@ Veja detalhes em [docs/quest-build.md](docs/quest-build.md).
 
 ## GitHub
 
-O repositorio local pode ser conectado a um remoto depois. Nao publique sem confirmacao explicita. Se quiser usar GitHub CLI no futuro:
+Repositorio remoto privado:
 
-```powershell
-gh repo create mergulho-ambiental-360 --private --source . --remote origin
-git push -u origin main
-```
+https://github.com/rleiteoliveira/mergulho-ambiental-360
