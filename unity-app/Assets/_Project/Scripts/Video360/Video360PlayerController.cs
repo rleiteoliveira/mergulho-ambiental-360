@@ -144,7 +144,7 @@ namespace MergulhoAmbiental360.Video360
 
         private string ResolveVideoUrl(VideoItem item)
         {
-            return item.videoSourceType switch
+            return item.sourceType switch
             {
                 VideoSourceType.LocalFile => BuildStreamingAssetsVideoPath(item.localFileName),
                 VideoSourceType.StreamingUrl => item.streamingUrl,

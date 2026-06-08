@@ -1,105 +1,106 @@
 # Mergulho Ambiental 360
 
-PoC de aplicacao VR para Meta Quest 3 voltada a educacao ambiental marinha em exposicoes com criancas. A primeira versao e um player 360 educativo: menu imersivo simples, cards grandes para escolha de videos e reproducao em uma esfera 360.
+PoC rápida para validar a viabilidade de uma experiência de educação ambiental em Meta Quest 3 baseada em seleção e reprodução de vídeos 360.
 
-## Objetivo
+Esta PoC não é um produto completo. O foco é descobrir o que é realmente necessário, o que é assertivo para a proposta e quais decisões dependem de teste no headset real ou alinhamento com o cliente.
 
-Criar uma base Unity simples, estavel e evolutiva para selecionar e assistir experiencias 360 sobre temas como peixe-boi, plantas marinhas, Fernando de Noronha, recifes, manguezais, oceano, conservacao e biodiversidade local.
+## Contexto
 
-## Escopo da PoC
+O cliente usa vídeos e experiências em exposições para crianças. Hoje usa um jogo comprado, mas quer algo próprio para educação ambiental marinha, com ideia de mergulho, peixe-boi, plantas marinhas, Fernando de Noronha e biodiversidade local.
 
-- Cena `AppStart` para bootstrap, carregamento de catalogo e entrada no menu.
-- Cena `MainMenu` com titulo, subtitulo, cards de videos, configuracoes e sair.
-- Cena `Video360Player` com `UnityEngine.Video.VideoPlayer`, esfera 360 invertida e controles basicos.
-- Catalogo local mockado em `Assets/StreamingAssets/video_catalog_mock.json`.
-- Scripts C# base para catalogo, menu, navegacao, player, input e UI.
-- Estrutura preparada para OpenXR, XR Interaction Toolkit e build Android/Meta Quest 3.
-- Sem backend, multiplayer, coleta de dados ou assets externos baixados automaticamente.
+A hipótese inicial é uma aplicação VR interativa para Meta Quest 3 com menu para selecionar e assistir vídeos 360. Ainda assim, precisamos comparar se o melhor caminho é:
 
-## O que funciona sem Quest 3
+- app nativo Unity para Quest 3;
+- site/WebXR simples;
+- solução híbrida.
 
-- Abrir o projeto no Unity Editor.
-- Gerar as cenas base pelo menu `Tools > Mergulho Ambiental 360 > Create or Refresh Base Scenes`.
-- Rodar `Assets/_Project/Scenes/AppStart.unity` no Editor.
-- Navegar com mouse pela UI padrao.
-- Testar atalhos no player: `Space` para play/pause, `Esc` para voltar, `N` para proximo video e `R` para reiniciar.
-- Validar catalogo mockado e fluxo basico de cenas.
+## O que esta PoC pretende validar
 
-## O que precisa ser validado no Quest 3 real
+- Se o app nativo Unity é realmente necessário.
+- Se uma web demo poderia resolver parte da demanda.
+- Como organizar vídeos 360 por catálogo.
+- Como seria a experiência básica de menu + player.
+- Quais pontos só podem ser validados no Quest 3 físico.
+- Quais perguntas ainda precisam ser feitas ao cliente.
 
-A validacao final de conforto, performance, input, legibilidade e usabilidade infantil precisa ser feita no headset real. Em especial:
+## Unity app vs web demo
 
-- FPS e estabilidade em video 360.
-- Legibilidade da UI dentro do headset.
-- Tamanho dos botoes para criancas e operacao por professor.
-- Ray/pointer dos controladores.
-- Audio e orientacao correta do video 360.
-- Conforto, ausencia de tontura e tempo adequado de sessao.
+`unity-app/` é o caminho principal recomendado para exposição infantil, porque tende a dar mais controle, estabilidade, uso offline e integração XR no Meta Quest 3.
 
-## Como abrir no Unity
+`web-demo/` é uma comparação simples para alinhamento visual, catálogo e conversa com cliente. Ela não substitui validação no Quest 3 e ainda não implementa player 360 real ou WebXR completo.
 
-1. Abra o Unity Hub.
-2. Selecione `Add project from disk`.
-3. Escolha esta pasta do repositorio.
-4. Use Unity 2022.3 LTS ou uma versao LTS mais recente validada para Meta Quest/OpenXR.
-5. Aguarde a restauracao dos pacotes.
-6. Execute `Tools > Mergulho Ambiental 360 > Create or Refresh Base Scenes`.
-7. Abra `Assets/_Project/Scenes/AppStart.unity`.
-8. Pressione Play.
+Recomendação inicial: começar com app Unity para a entrega principal em exposição e manter a web demo como apoio/comparação.
 
-## Ambiente local
-
-Rode a checagem local:
+## Como clonar e iniciar
 
 ```powershell
+git clone https://github.com/rleiteoliveira/mergulho-ambiental-360.git
+cd mergulho-ambiental-360
+git lfs install
+git lfs pull
 .\tools\check-dev-env.ps1
 ```
 
-Veja detalhes em [docs/local-development.md](docs/local-development.md).
+## Como rodar a web demo
 
-## Como adicionar videos 360
+Sem instalar framework:
 
-1. Tenha certeza de que o video e autorizado para uso no projeto.
-2. Copie o arquivo para `Assets/StreamingAssets/Videos/`.
-3. Edite `Assets/StreamingAssets/video_catalog_mock.json`.
-4. Defina `videoSourceType` como `LocalFile`.
-5. Preencha `localFileName` com o nome do arquivo.
-6. Mantenha `isEnabled` como `true`.
+```powershell
+cd web-demo
+python -m http.server 8080
+```
 
-Para streaming, defina `videoSourceType` como `StreamingUrl` e preencha `streamingUrl`. Evite URLs de terceiros sem autorizacao formal.
+Depois abra:
 
-## Como gerar build Android/Quest
+```text
+http://localhost:8080
+```
 
-1. Instale Android Build Support no Unity Hub.
-2. No Unity, abra `File > Build Settings`.
-3. Selecione `Android` e clique em `Switch Platform`.
-4. Confirme que as cenas `AppStart`, `MainMenu` e `Video360Player` estao na lista.
-5. Configure XR/OpenXR em `Project Settings > XR Plug-in Management`.
-6. Ative OpenXR para Android e configure recursos compativeis com Meta Quest.
-7. Configure `Player Settings` para Android/Quest.
-8. Gere APK/AAB ou faca Build and Run com o Quest 3 conectado em Developer Mode.
+Também é possível abrir `web-demo/index.html` diretamente, mas alguns navegadores bloqueiam `fetch` local. O servidor simples evita esse problema.
 
-Veja detalhes em [docs/quest-build.md](docs/quest-build.md).
+## Como abrir a parte Unity
 
-## Roadmap inicial
+1. Abra o Unity Hub.
+2. Adicione a pasta `unity-app/` como projeto.
+3. Use Unity 2022.3 LTS ou uma LTS validada para Meta Quest/OpenXR.
+4. Instale Android Build Support.
+5. Aguarde os pacotes serem restaurados.
+6. Se quiser gerar cenas base, use `Tools > Mergulho Ambiental 360 > Create or Refresh Base Scenes`.
+7. Abra `unity-app/Assets/_Project/Scenes/AppStart.unity` quando as cenas existirem.
 
-- Fase 0: setup e estrutura.
-- Fase 1: menu + player 360.
-- Fase 2: teste no Quest 3.
-- Fase 3: identidade visual e videos reais.
-- Fase 4: modo professor.
-- Fase 5: quizzes, narracao e melhorias educativas.
+Se Unity CLI não estiver disponível, o projeto ainda pode ser estudado pela estrutura, scripts e documentação.
 
-## Limitacoes conhecidas
+## O que precisa ser testado no Quest 3 real
 
-- As cenas sao geradas por script no Unity Editor; elas ainda nao existem ate o comando do menu ser executado.
-- O catalogo inicial usa placeholders e nao reproduz videos reais.
-- Ray/pointer VR esta preparado conceitualmente, mas precisa de configuracao e teste final com XR Interaction Toolkit/Meta XR no headset.
-- Videos em `StreamingAssets` podem exigir ajustes de empacotamento em Android conforme tamanho, codec e estrategia de distribuicao.
-- Nao ha backend, analytics, multiplayer, quiz ou coleta de dados nesta PoC.
+- Instalação do APK.
+- Abertura do app no headset.
+- Legibilidade do menu.
+- Tamanho dos botões para crianças.
+- Interação por controle/ray.
+- Orientação correta do vídeo 360.
+- Áudio.
+- Performance.
+- Conforto.
+- Uso offline, se exigido.
+- Operação por professor/monitor.
 
-## GitHub
+## Próximos passos
 
-Repositorio remoto privado:
+1. Rodar a web demo para alinhar menu e catálogo.
+2. Abrir `unity-app/` no Unity.
+3. Testar um vídeo 360 real curto e autorizado.
+4. Gerar build Android.
+5. Instalar no Quest 3.
+6. Validar o checklist.
+7. Responder perguntas do cliente.
+8. Decidir Unity, web ou híbrido.
 
-https://github.com/rleiteoliveira/mergulho-ambiental-360
+## Documentos principais
+
+- [Visão do produto](docs/product-vision.md)
+- [Opções técnicas](docs/technical-options.md)
+- [Perguntas para cliente](docs/client-questions.md)
+- [Checklist de validação](docs/validation-checklist.md)
+- [Requisitos de vídeo](docs/video-requirements.md)
+- [Riscos](docs/risks.md)
+- [Roadmap](docs/roadmap.md)

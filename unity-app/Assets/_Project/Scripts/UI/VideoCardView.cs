@@ -45,7 +45,7 @@ namespace MergulhoAmbiental360.UI
 
             if (placeholderBadge != null)
             {
-                placeholderBadge.SetActive(item.videoSourceType == VideoSourceType.Placeholder);
+                placeholderBadge.SetActive(item.sourceType == VideoSourceType.Placeholder);
             }
 
             if (selectButton != null)

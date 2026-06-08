@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mergulho Ambiental 360 - Web Demo</title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">PoC comparativa</p>
+        <h1>Mergulho Ambiental 360</h1>
+        <p>
+          Menu simples para discutir catálogo, fluxo e viabilidade web antes de validar a experiência real no Meta Quest 3.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Catálogo e player">
+        <div>
+          <div class="section-heading">
+            <h2>Escolha uma experiência</h2>
+            <span id="catalog-status">Carregando catálogo...</span>
+          </div>
+          <div id="video-grid" class="video-grid"></div>
+        </div>
+
+        <aside class="player-panel">
+          <h2 id="selected-title">Nenhum vídeo selecionado</h2>
+          <p id="selected-description">Selecione um card para ver os detalhes.</p>
+          <video id="video-player" controls playsinline preload="metadata"></video>
+          <p id="player-note" class="note">
+            Player HTML5 comum. Player 360 real exigirá WebXR, A-Frame ou Three.js em uma etapa futura.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

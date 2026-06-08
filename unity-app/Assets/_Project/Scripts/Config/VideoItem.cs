@@ -3,13 +3,6 @@ using UnityEngine;
 
 namespace MergulhoAmbiental360.Config
 {
-    public enum VideoSourceType
-    {
-        LocalFile,
-        StreamingUrl,
-        Placeholder
-    }
-
     [Serializable]
     public class VideoItem
     {
@@ -17,10 +10,10 @@ namespace MergulhoAmbiental360.Config
         public string title;
         [TextArea(2, 4)] public string description;
         public string category;
-        public VideoSourceType videoSourceType = VideoSourceType.Placeholder;
+        public VideoSourceType sourceType = VideoSourceType.Placeholder;
         public string localFileName;
         public string streamingUrl;
-        public string thumbnail;
+        public string thumbnailName;
         public string durationLabel;
         public bool isEnabled = true;
 
@@ -31,7 +24,7 @@ namespace MergulhoAmbiental360.Config
                 return false;
             }
 
-            return videoSourceType switch
+            return sourceType switch
             {
                 VideoSourceType.LocalFile => !string.IsNullOrWhiteSpace(localFileName),
                 VideoSourceType.StreamingUrl => !string.IsNullOrWhiteSpace(streamingUrl),

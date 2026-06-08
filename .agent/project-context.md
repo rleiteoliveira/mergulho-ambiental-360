@@ -1,19 +1,19 @@
 # Project Context
 
-Este projeto e uma PoC Unity para Meta Quest 3 chamada `Mergulho Ambiental 360`.
+Este repositório é uma PoC de descoberta para `Mergulho Ambiental 360`, uma experiência de educação ambiental 360 para crianças em exposições.
 
-O objetivo inicial e um player 360 educativo para exposicoes com criancas, nao um jogo complexo. O usuario deve abrir um menu simples, escolher um card e assistir um video 360 sobre educacao ambiental marinha.
+O escopo inicial é menu + catálogo + player de vídeos 360. Não é um jogo complexo.
 
-Prioridades:
+Hipótese principal: app nativo Unity para Meta Quest 3 é o caminho mais adequado para exposição infantil por controle, estabilidade e possibilidade de uso offline.
 
-- Estrutura simples e evolutiva.
-- Codigo claro e documentado quando necessario.
-- Compatibilidade futura com Meta Quest 3.
-- Desenvolvimento inicial possivel no Unity Editor.
-- Sem backend enquanto nao houver necessidade real.
-- Sem multiplayer.
-- Sem coleta de dados de criancas.
-- Sem download automatico de assets externos.
-- Sem uso de videos de terceiros sem autorizacao.
+A web demo é comparativa. Ela serve para alinhamento visual, catálogo e discussão com cliente, mas não substitui validação no Quest 3.
 
-Ao continuar este projeto, evite overengineering. Prefira classes pequenas, responsabilidades claras e configuracao local via JSON ou ScriptableObject.
+Instruções para agentes:
+
+- Evitar overengineering.
+- Priorizar clareza e velocidade.
+- Não criar backend sem necessidade.
+- Não baixar assets externos sem autorização.
+- Não usar vídeos protegidos.
+- Não transformar em jogo completo.
+- Não prometer compatibilidade final sem teste no headset.

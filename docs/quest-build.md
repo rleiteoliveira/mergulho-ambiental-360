@@ -1,49 +1,41 @@
 # Build Android / Meta Quest 3
 
-## Pre-requisitos
+## Pré-requisitos
 
-- Android Build Support instalado no Unity.
-- Meta Quest Developer Hub instalado, se usado no fluxo da equipe.
+- `unity-app/` aberto no Unity.
+- Android Build Support instalado.
 - Quest 3 em Developer Mode.
-- Cabo USB-C ou fluxo de deploy configurado.
-- Projeto aberto e cenas geradas.
+- OpenXR configurado para Android.
+- Vídeo 360 real curto e autorizado para teste técnico.
 
 ## Passos esperados
 
-1. Abra `File > Build Settings`.
-2. Selecione `Android`.
-3. Clique em `Switch Platform`.
-4. Confirme as cenas:
+1. Abrir `unity-app/` no Unity.
+2. Abrir `File > Build Settings`.
+3. Selecionar `Android`.
+4. Clicar em `Switch Platform`.
+5. Confirmar cenas:
    - `Assets/_Project/Scenes/AppStart.unity`
    - `Assets/_Project/Scenes/MainMenu.unity`
    - `Assets/_Project/Scenes/Video360Player.unity`
-5. Abra `Project Settings > XR Plug-in Management`.
-6. Ative OpenXR para Android.
-7. Configure recursos OpenXR/Meta Quest conforme a versao instalada dos pacotes.
-8. Em `Player Settings`, revise:
-   - Package Name.
-   - Minimum API Level.
-   - Scripting Backend.
-   - Target Architectures.
-   - Graphics APIs.
-   - Orientation.
-9. Gere build.
-10. Instale e teste no Quest 3 real.
+6. Abrir `Project Settings > XR Plug-in Management`.
+7. Ativar OpenXR para Android.
+8. Revisar `Player Settings`.
+9. Gerar APK.
+10. Instalar no Quest 3.
+11. Validar `docs/validation-checklist.md`.
 
 ## Checklist de build
 
-- Android selecionado como plataforma.
-- Cenas adicionadas ao build.
-- OpenXR ativo para Android.
-- Input configurado para controladores.
-- Videos reais presentes ou catalogo em modo placeholder.
-- APK instala no Quest 3.
-- App abre em VR.
-- Menu aparece legivel.
-- Player abre o video selecionado.
-- Audio funciona.
-- Voltar ao menu funciona.
+- [ ] Android selecionado.
+- [ ] Cenas adicionadas.
+- [ ] OpenXR ativo.
+- [ ] Input de controlador configurado.
+- [ ] Vídeo real ou placeholder disponível.
+- [ ] APK instala.
+- [ ] App abre.
+- [ ] Menu e player funcionam.
 
-## Validacao real
+## Importante
 
-Mesmo que o Editor funcione, o build so deve ser considerado validado apos teste no headset real. Conforto, performance, input, escala da UI e legibilidade infantil dependem do dispositivo.
+Não considerar o app validado sem teste no Quest 3 real.

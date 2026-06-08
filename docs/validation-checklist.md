@@ -1,25 +1,28 @@
-# Checklist de Validacao no Meta Quest 3
+# Checklist de Validação
 
-- [ ] App instala no Quest 3.
-- [ ] App abre sem erro.
-- [ ] Menu inicial aparece.
-- [ ] Titulo e subtitulo estao legiveis.
-- [ ] Cards sao grandes o suficiente.
-- [ ] Cards sao clicaveis com controlador.
-- [ ] Botao de configuracoes responde.
-- [ ] Botao sair responde conforme esperado.
-- [ ] Video selecionado inicia.
-- [ ] Audio funciona.
-- [ ] Pause funciona.
-- [ ] Reiniciar video funciona.
-- [ ] Proximo video funciona.
+## Sem Quest 3
+
+- [ ] Menu abre no editor.
+- [ ] Catálogo carrega.
+- [ ] Cards aparecem.
+- [ ] Player recebe item selecionado.
+- [ ] Vídeo placeholder é aceito.
+- [ ] Fallback de interação funciona.
+- [ ] Web demo abre localmente.
+- [ ] Documentação está clara.
+
+## Com Quest 3
+
+- [ ] APK instala.
+- [ ] App abre.
+- [ ] Menu é legível.
+- [ ] Botões são fáceis para crianças.
+- [ ] Controle funciona.
+- [ ] Vídeo 360 orientado corretamente.
+- [ ] Áudio funciona.
+- [ ] Performance estável.
+- [ ] Não há desconforto.
 - [ ] Voltar ao menu funciona.
-- [ ] Performance parece estavel.
-- [ ] Nao ha tontura ou desconforto perceptivel.
-- [ ] Criancas entendem o fluxo com pouca explicacao.
-- [ ] Professor ou monitor consegue operar rapidamente.
-- [ ] Tempo de sessao e adequado para exposicao.
-- [ ] Video 360 esta na orientacao correta.
-- [ ] Qualidade visual e satisfatoria.
-- [ ] Textos nao ficam pequenos demais no headset.
-- [ ] UI nao obstrui o conteudo durante a reproducao.
+- [ ] Professor consegue operar.
+- [ ] App funciona sem internet se necessário.
+- [ ] Tempo de troca entre vídeos é aceitável.

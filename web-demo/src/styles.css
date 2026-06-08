@@ -1,0 +1,148 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #061316;
+  color: #f4fbfb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #061316;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.hero {
+  padding: 24px 0 28px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #ffd46b;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.hero p:last-child {
+  max-width: 760px;
+  color: #b9d2d5;
+  line-height: 1.55;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-heading span {
+  color: #92b8bd;
+  font-size: 0.9rem;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.video-card,
+.player-panel {
+  border: 1px solid #204248;
+  border-radius: 8px;
+  background: #0b2429;
+}
+
+.video-card {
+  min-height: 190px;
+  padding: 20px;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.video-card:hover,
+.video-card:focus {
+  outline: 3px solid #ffd46b;
+  outline-offset: 2px;
+}
+
+.video-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+
+.video-card p {
+  color: #c8dcdf;
+  line-height: 1.45;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #ffd46b;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.player-panel {
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+video {
+  width: 100%;
+  min-height: 220px;
+  margin: 12px 0;
+  background: #020708;
+  border-radius: 8px;
+}
+
+.note {
+  color: #9bbec3;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  .workspace,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-panel {
+    position: static;
+  }
+}

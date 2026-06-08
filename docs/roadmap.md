@@ -1,48 +1,43 @@
 # Roadmap
 
-## Fase 0: setup e estrutura
+## Fase 0 — PoC rápida
 
-- Criar repositorio.
-- Criar estrutura Unity.
-- Adicionar scripts base.
-- Adicionar documentacao.
-- Criar catalogo mockado.
+- Repo estruturado.
+- Catálogo mockado.
+- Menu conceitual.
+- Player 360 base.
+- Web demo comparativa.
+- Docs de decisão.
 
-## Fase 1: menu + player 360
+## Fase 1 — Teste técnico
 
-- Gerar cenas base.
-- Validar menu no Editor.
-- Configurar videos reais autorizados.
-- Validar player 360 no Editor.
-- Ajustar controles basicos.
+- Abrir no Unity.
+- Testar player com vídeo 360 real curto.
+- Gerar build Android.
+- Instalar no Quest 3.
+- Validar checklist.
 
-## Fase 2: teste no Quest 3
+## Fase 2 — Alinhamento com cliente
 
-- Configurar Android/OpenXR.
-- Gerar build.
-- Instalar no headset.
-- Testar input, FPS, legibilidade e conforto.
-- Ajustar UI e escala.
+- Decidir app nativo ou web.
+- Confirmar quantidade de vídeos.
+- Confirmar offline/online.
+- Confirmar operação professor/criança.
+- Confirmar identidade visual.
 
-## Fase 3: identidade visual e videos reais
+## Fase 3 — MVP
 
-- Definir identidade visual.
-- Inserir thumbnails autorizadas.
-- Inserir videos 360 reais.
-- Ajustar catalogo por categorias.
-- Validar conteudo com equipe educativa.
+- Menu final.
+- Player estável.
+- Vídeos reais.
+- Modo professor simples.
+- Build instalável.
 
-## Fase 4: modo professor
+## Fase 4 — Produto
 
-- Criar tela simples de configuracoes.
-- Criar playlist/ordem recomendada.
-- Permitir bloquear selecao livre, se necessario.
-- Criar fluxo de operacao assistida.
-
-## Fase 5: melhorias educativas
-
-- Quizzes simples.
-- Narracao guiada.
-- Trilhas educativas por modulo.
-- Feedback qualitativo sem dados sensiveis, somente se aprovado.
-- Conteudos adicionais: manguezais, oceanos, conservacao e biodiversidade local.
+- Identidade visual.
+- Narração.
+- Acessibilidade.
+- Atualização de conteúdo.
+- Possível site de apoio.
+- Documentação de instalação.

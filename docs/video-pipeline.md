@@ -1,77 +1,66 @@
-# Pipeline de Videos 360
+# Pipeline de Vídeos 360
 
-## Preparacao
+Este documento complementa `docs/video-requirements.md`.
 
-Use apenas videos com autorizacao clara de uso. Nao inclua conteudo protegido por direitos autorais sem permissao formal.
+## Pastas
 
-Recomendacoes iniciais:
-
-- Video equiretangular 360.
-- Codec H.264 ou H.265, conforme suporte e teste no Quest 3.
-- Audio AAC quando aplicavel.
-- Duracao curta para exposicoes infantis.
-- Arquivos otimizados para reduzir carregamento, armazenamento e risco de queda de FPS.
-
-## Onde colocar arquivos
-
-Para a PoC:
+Área organizada da PoC Unity:
 
 ```text
-Assets/StreamingAssets/Videos/
+unity-app/Assets/_Project/StreamingAssets/Videos/
 ```
 
-O catalogo mockado fica em:
+Pasta runtime convencional do Unity, se usada na implementação final:
 
 ```text
-Assets/StreamingAssets/video_catalog_mock.json
+unity-app/Assets/StreamingAssets/Videos/
 ```
 
-## Configuracao no catalogo
+Web demo:
 
-Exemplo com arquivo local:
+```text
+web-demo/public/videos/
+```
+
+## Catálogo
+
+Use `sourceType`:
 
 ```json
 {
   "id": "recifes-demo",
   "title": "Recifes Demo",
-  "description": "Video autorizado para teste.",
+  "description": "Vídeo autorizado para teste.",
   "category": "Recifes",
-  "videoSourceType": "LocalFile",
+  "sourceType": "LocalFile",
   "localFileName": "recifes-demo.mp4",
   "streamingUrl": "",
-  "thumbnail": "recifes-demo.png",
+  "thumbnailName": "recifes-demo.png",
   "durationLabel": "3 min",
   "isEnabled": true
 }
 ```
 
-Exemplo com streaming:
+Para streaming:
 
 ```json
 {
   "id": "noronha-stream",
   "title": "Noronha Stream",
-  "description": "Video remoto autorizado.",
-  "category": "Territorio",
-  "videoSourceType": "StreamingUrl",
+  "description": "Vídeo remoto autorizado.",
+  "category": "Território",
+  "sourceType": "StreamingUrl",
   "localFileName": "",
   "streamingUrl": "https://exemplo-autorizado/video360.mp4",
-  "thumbnail": "noronha.png",
+  "thumbnailName": "noronha.png",
   "durationLabel": "5 min",
   "isEnabled": true
 }
 ```
 
-## LocalFile, StreamingAssets e StreamingUrl
-
-- `LocalFile`: arquivo dentro de `Assets/StreamingAssets/Videos`.
-- `StreamingAssets`: pasta Unity empacotada no build. Em Android, arquivos grandes podem exigir estrategia propria de copia, download autorizado ou armazenamento externo.
-- `StreamingUrl`: URL remota. Exige rede, autorizacao de uso e testes de estabilidade.
-- `Placeholder`: item visivel no menu sem reproducao real.
-
 ## Cuidados
 
-- Nao baixe videos externos automaticamente.
-- Nao trate videos de terceiros como assets finais.
-- Nao commite arquivos grandes reais sem decisao explicita.
-- Teste orientacao, escala e costura do video 360 no headset real.
+- Não baixar vídeos externos automaticamente.
+- Não usar conteúdo sem autorização.
+- Não commitar vídeos grandes sem decisão explícita.
+- Validar codec, resolução, bitrate, orientação, áudio e conforto no Quest 3.

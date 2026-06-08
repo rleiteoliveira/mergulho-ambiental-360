@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": "peixe-boi",
+      "title": "Mergulho com Peixe-Boi",
+      "description": "Experiência 360 sobre conservação do peixe-boi e vida marinha.",
+      "category": "Biodiversidade",
+      "sourceType": "Placeholder",
+      "localFileName": "",
+      "streamingUrl": "",
+      "thumbnailName": "peixe-boi-placeholder.png",
+      "durationLabel": "3 min",
+      "isEnabled": true
+    },
+    {
+      "id": "plantas-marinhas",
+      "title": "Plantas Marinhas",
+      "description": "Conheça plantas marinhas, algas e sua importância para o ecossistema.",
+      "category": "Ecossistemas",
+      "sourceType": "Placeholder",
+      "localFileName": "",
+      "streamingUrl": "",
+      "thumbnailName": "plantas-marinhas-placeholder.png",
+      "durationLabel": "4 min",
+      "isEnabled": true
+    },
+    {
+      "id": "fernando-de-noronha",
+      "title": "Fernando de Noronha",
+      "description": "Uma visita imersiva a ambientes costeiros e marinhos de Noronha.",
+      "category": "Território",
+      "sourceType": "Placeholder",
+      "localFileName": "",
+      "streamingUrl": "",
+      "thumbnailName": "noronha-placeholder.png",
+      "durationLabel": "5 min",
+      "isEnabled": true
+    },
+    {
+      "id": "recifes-biodiversidade",
+      "title": "Recifes e Biodiversidade",
+      "description": "Observe recifes, peixes, corais e relações de conservação.",
+      "category": "Recifes",
+      "sourceType": "Placeholder",
+      "localFileName": "",
+      "streamingUrl": "",
+      "thumbnailName": "recifes-placeholder.png",
+      "durationLabel": "4 min",
+      "isEnabled": true
+    }
+  ]
+}

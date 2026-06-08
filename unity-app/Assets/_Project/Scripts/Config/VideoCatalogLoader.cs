@@ -22,9 +22,11 @@ namespace MergulhoAmbiental360.Config
             public string title;
             public string description;
             public string category;
+            public string sourceType;
             public string videoSourceType;
             public string localFileName;
             public string streamingUrl;
+            public string thumbnailName;
             public string thumbnail;
             public string durationLabel;
             public bool isEnabled = true;
@@ -166,9 +168,13 @@ namespace MergulhoAmbiental360.Config
         private VideoItem ToVideoItem(VideoItemDto source)
         {
             VideoSourceType sourceType = VideoSourceType.Placeholder;
-            if (!string.IsNullOrWhiteSpace(source.videoSourceType))
+            string sourceTypeText = !string.IsNullOrWhiteSpace(source.sourceType)
+                ? source.sourceType
+                : source.videoSourceType;
+
+            if (!string.IsNullOrWhiteSpace(sourceTypeText))
             {
-                Enum.TryParse(source.videoSourceType, true, out sourceType);
+                Enum.TryParse(sourceTypeText, true, out sourceType);
             }
 
             return new VideoItem
@@ -177,10 +183,10 @@ namespace MergulhoAmbiental360.Config
                 title = source.title,
                 description = source.description,
                 category = source.category,
-                videoSourceType = sourceType,
+                sourceType = sourceType,
                 localFileName = source.localFileName,
                 streamingUrl = source.streamingUrl,
-                thumbnail = source.thumbnail,
+                thumbnailName = !string.IsNullOrWhiteSpace(source.thumbnailName) ? source.thumbnailName : source.thumbnail,
                 durationLabel = source.durationLabel,
                 isEnabled = source.isEnabled
             };
