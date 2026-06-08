@@ -1,0 +1,49 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+
+# Unity cache and generated metadata
+.vs/
+.gradle/
+.idea/
+.consulo/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Crash reports
+sysinfo.txt
+
+# Builds and packages
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Large real media should be added intentionally only.
+Assets/StreamingAssets/Videos/*
+!Assets/StreamingAssets/Videos/README.md
+
+# Keep generated thumbnails intentional.
+Assets/StreamingAssets/Textures/Thumbnails/*
+!Assets/StreamingAssets/Textures/Thumbnails/README.md
