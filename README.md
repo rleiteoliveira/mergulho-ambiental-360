@@ -56,7 +56,15 @@ Depois abra:
 http://localhost:8080
 ```
 
-Também é possível abrir `web-demo/index.html` diretamente, mas alguns navegadores bloqueiam `fetch` local. O servidor simples evita esse problema.
+Também é possível abrir `web-demo/index.html` diretamente, mas alguns navegadores bloqueiam `fetch` local (a página cai no catálogo fallback de 1 item). Use sempre o servidor simples.
+
+Alternativa opcional com Docker (sem Python):
+
+```powershell
+docker compose up --build web-demo
+```
+
+Detalhes de ambiente, Docker e WSL em [docs/local-dev.md](docs/local-dev.md).
 
 ## Como abrir a parte Unity
 
@@ -97,6 +105,7 @@ Se Unity CLI não estiver disponível, o projeto ainda pode ser estudado pela es
 
 ## Documentos principais
 
+- [Ambiente local de desenvolvimento](docs/local-dev.md)
 - [Visão do produto](docs/product-vision.md)
 - [Opções técnicas](docs/technical-options.md)
 - [Perguntas para cliente](docs/client-questions.md)

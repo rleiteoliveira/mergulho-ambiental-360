@@ -1,0 +1,14 @@
+# Alternativa OPCIONAL para servir apenas a web demo estática.
+# Sem Node, sem framework, sem backend. Equivale a:
+#   cd web-demo && python -m http.server 8080
+#
+# Uso:
+#   docker compose up --build web-demo
+# Depois abra:
+#   http://localhost:8080
+services:
+  web-demo:
+    build: ./web-demo
+    container_name: mergulho-web-demo
+    ports:
+      - "8080:80"

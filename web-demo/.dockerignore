@@ -1,0 +1,12 @@
+# Não baquear na imagem o que não faz parte do site servido.
+Dockerfile
+.dockerignore
+README.md
+
+# Nunca baquear vídeos pesados na imagem.
+# Eles servem apenas para teste local e o Docker deve funcionar sem eles.
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm

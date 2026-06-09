@@ -22,15 +22,24 @@ const selectedDescription = document.querySelector("#selected-description");
 const player = document.querySelector("#video-player");
 const playerNote = document.querySelector("#player-note");
 
+// Catálogo canônico da web demo.
+// O caminho é relativo ao index.html, que é servido na raiz de web-demo/.
+// Por isso usamos "src/video-catalog.json" e não "video-catalog.json".
+const CATALOG_URL = "src/video-catalog.json";
+
 async function loadCatalog() {
   try {
-    const response = await fetch("video-catalog.json");
+    const response = await fetch(CATALOG_URL);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
 
-    return await response.json();
+    const catalog = await response.json();
+    const count = Array.isArray(catalog.items) ? catalog.items.length : 0;
+    console.info("[Mergulho360] Catalog loaded", count, `(${CATALOG_URL})`);
+    return catalog;
   } catch (error) {
+    console.warn("[Mergulho360] Using fallback catalog", error);
     statusText.textContent = "Catálogo fallback";
     return fallbackCatalog;
   }
@@ -57,6 +66,8 @@ function renderCatalog(catalog) {
     button.addEventListener("click", () => selectVideo(item));
     grid.appendChild(button);
   });
+
+  console.info("[Mergulho360] Rendered cards", items.length);
 }
 
 function selectVideo(item) {

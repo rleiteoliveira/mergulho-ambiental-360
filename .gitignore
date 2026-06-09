@@ -57,6 +57,13 @@ dist/
 .parcel-cache/
 .vite/
 
+# Editors
+.vscode/
+
+# Docker / local environment
+.env
+.env.local
+
 # Optional heavy videos. Keep folder structure with .gitkeep/README files.
 *.mp4
 *.mov
