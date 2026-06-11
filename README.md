@@ -25,11 +25,11 @@ A hipótese inicial é uma aplicação VR interativa para Meta Quest 3 com menu 
 
 ## Unity app vs web demo
 
-`unity-app/` é o caminho principal recomendado para exposição infantil, porque tende a dar mais controle, estabilidade, uso offline e integração XR no Meta Quest 3.
+`web-demo/` inclui um **player 360 em WebXR** (A-Frame): catálogo, menu e esfera 360 navegável no PC, no celular (giroscópio) e em headsets pelo navegador. É o caminho desenvolvido primeiro na PoC, por ser testável sem hardware próprio e portátil entre dispositivos (inclusive headsets PCVR via navegador do PC).
 
-`web-demo/` é uma comparação simples para alinhamento visual, catálogo e conversa com cliente. Ela não substitui validação no Quest 3 e ainda não implementa player 360 real ou WebXR completo.
+`unity-app/` segue como opção para um app nativo futuro (mais controle, uso offline e integração XR), mas exige build por dispositivo e o headset em mãos para iterar.
 
-Recomendação inicial: começar com app Unity para a entrega principal em exposição e manter a web demo como apoio/comparação.
+Recomendação atual (fase de PoC/portfólio): liderar pela web/WebXR e abrir o Unity nativo só se a validação indicar necessidade. Mudança registrada em [.agent/decision-log.md](.agent/decision-log.md).
 
 ## Como clonar e iniciar
 
@@ -64,7 +64,9 @@ Alternativa opcional com Docker (sem Python):
 docker compose up --build web-demo
 ```
 
-Detalhes de ambiente, Docker e WSL em [docs/local-dev.md](docs/local-dev.md).
+Para testar no celular ou publicar, há deploy no **GitHub Pages** via Actions ([.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml)).
+
+Detalhes de ambiente, Docker, WSL e deploy em [docs/local-dev.md](docs/local-dev.md).
 
 ## Como abrir a parte Unity
 

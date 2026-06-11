@@ -151,6 +151,38 @@ Mesmo com LFS, vídeos 360 reais tendem a ser grandes demais para o fluxo normal
 repositório. Por isso `*.mp4/.mov/.mkv/.avi/.webm` são ignorados no `.gitignore`.
 Avalie hospedagem dedicada caso a caso.
 
+## 9. Deploy no GitHub Pages
+
+A web demo é publicada no GitHub Pages por um workflow de Actions
+(`.github/workflows/deploy-pages.yml`), que envia **apenas** a pasta `web-demo/`.
+
+Pré-requisitos:
+
+- Repositório **público** (Pages gratuito) ou conta GitHub Pro.
+- Em `Settings > Pages > Build and deployment`, definir **Source = "GitHub Actions"**.
+
+Fluxo:
+
+1. Merge/push das mudanças para a branch `main`.
+2. O workflow roda sozinho (ou manualmente em `Actions > Deploy web demo (GitHub Pages) > Run workflow`).
+3. A URL publicada aparece no resumo do job, algo como
+   `https://rleiteoliveira.github.io/mergulho-ambiental-360/`.
+
+O site usa apenas caminhos relativos, então funciona sob o subcaminho do Pages.
+
+## 10. Testar no celular (Android / iPhone)
+
+O giroscópio ("olhar em volta") exige **HTTPS** — não funciona em `http` puro.
+
+- **Sem deploy (rápido):** sirva local (`python -m http.server 8080`) e exponha a porta por
+  HTTPS — ex.: VS Code > painel **Ports** > Forward a Port > `8080` > visibilidade **Public**.
+  Abra a URL `https://...devtunnels.ms` no celular.
+- **Com deploy:** abra a URL do GitHub Pages no celular.
+
+Toque num card e mova o aparelho para olhar em volta. No iPhone, toque no botão de permissão
+de sensores que o A-Frame mostra; no Android (ex.: Samsung Galaxy), o Chrome costuma liberar
+direto em HTTPS. Para sensação estéreo, use um Google Cardboard + o botão de VR.
+
 ## O que ainda depende do Quest 3 físico
 
 Conforto, input real, performance, legibilidade do menu para crianças e orientação do

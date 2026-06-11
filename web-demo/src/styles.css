@@ -122,11 +122,21 @@ h1 {
   top: 20px;
 }
 
-video {
+.viewer-360 {
+  position: relative;
   width: 100%;
-  min-height: 220px;
+  height: min(58vh, 420px);
   margin: 12px 0;
   background: #020708;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.viewer-360 a-scene,
+.viewer-360 .a-canvas,
+.viewer-360 canvas {
+  width: 100% !important;
+  height: 100% !important;
   border-radius: 8px;
 }
 

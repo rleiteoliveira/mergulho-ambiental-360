@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mergulho Ambiental 360 - Web Demo</title>
+    <!-- A-Frame: WebXR + esfera 360. Um único <script>, sem build step. -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.7.0/dist/aframe-master.min.js"></script>
     <link rel="stylesheet" href="src/styles.css">
   </head>
   <body>
@@ -12,7 +14,7 @@
         <p class="eyebrow">PoC comparativa</p>
         <h1>Mergulho Ambiental 360</h1>
         <p>
-          Menu simples para discutir catálogo, fluxo e viabilidade web antes de validar a experiência real no Meta Quest 3.
+          Menu simples para discutir catálogo, fluxo e viabilidade web antes de validar a experiência real no headset VR.
         </p>
       </section>
 
@@ -28,9 +30,36 @@
         <aside class="player-panel">
           <h2 id="selected-title">Nenhum vídeo selecionado</h2>
           <p id="selected-description">Selecione um card para ver os detalhes.</p>
-          <video id="video-player" controls playsinline preload="metadata"></video>
+
+          <div class="viewer-360">
+            <a-scene
+              embedded
+              vr-mode-ui="enabled: true"
+              device-orientation-permission-ui="enabled: true"
+              loading-screen="enabled: false"
+              renderer="colorManagement: true">
+              <a-assets>
+                <video id="video360" crossorigin="anonymous" loop muted playsinline webkit-playsinline></video>
+              </a-assets>
+
+              <!-- Esfera de vídeo 360 real (visível apenas quando há vídeo configurado) -->
+              <a-videosphere id="videosphere" src="#video360" visible="false"></a-videosphere>
+
+              <!-- Placeholder 360 navegável, gerado por código (sem baixar vídeo) -->
+              <a-sky id="sky360" color="#0b2429"></a-sky>
+
+              <!-- Câmera: arrastar no desktop, giroscópio no celular, head-tracking em VR -->
+              <a-entity
+                camera
+                look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true"
+                wasd-controls="enabled: false"
+                position="0 1.6 0"></a-entity>
+            </a-scene>
+          </div>
+
           <p id="player-note" class="note">
-            Player HTML5 comum. Player 360 real exigirá WebXR, A-Frame ou Three.js em uma etapa futura.
+            Preview 360 (WebXR). No celular, mova o aparelho para olhar em volta (giroscópio).
+            No desktop, arraste com o mouse. Toque no ícone de óculos para entrar em VR.
           </p>
         </aside>
       </section>
