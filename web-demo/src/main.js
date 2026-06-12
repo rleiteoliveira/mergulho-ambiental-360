@@ -26,6 +26,8 @@ const scene = document.querySelector("a-scene");
 const sky = document.querySelector("#sky360");
 const videosphere = document.querySelector("#videosphere");
 const video360 = document.querySelector("#video360");
+const vrMenu = document.querySelector("#vr-menu");
+const vrMenuToggle = document.querySelector("#vr-menu-toggle");
 
 let currentItems = [];
 
@@ -75,6 +77,7 @@ function renderCatalog(catalog) {
     grid.appendChild(button);
   });
 
+  buildVrMenu(items);
   console.info("[Mergulho360] Rendered cards", items.length);
 }
 
@@ -191,6 +194,113 @@ function makePlaceholderTexture(item) {
   return canvas.toDataURL("image/png");
 }
 
+// Rótulo de botão como textura de canvas (mesma ideia do placeholder).
+// Canvas usa a fonte do navegador, então acentos (ã, é, ç) saem corretos
+// — a fonte SDF padrão do A-Frame não cobre bem esses caracteres.
+function makeLabelTexture(title) {
+  const width = 512;
+  const height = 200;
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, width, height);
+
+  const pad = 8;
+  ctx.fillStyle = "rgba(11, 36, 41, 0.92)";
+  ctx.strokeStyle = "#2f5b62";
+  ctx.lineWidth = 5;
+  if (ctx.roundRect) {
+    ctx.beginPath();
+    ctx.roundRect(pad, pad, width - 2 * pad, height - 2 * pad, 24);
+    ctx.fill();
+    ctx.stroke();
+  } else {
+    ctx.fillRect(pad, pad, width - 2 * pad, height - 2 * pad);
+    ctx.strokeRect(pad, pad, width - 2 * pad, height - 2 * pad);
+  }
+
+  ctx.fillStyle = "#f4fbfb";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "bold 42px Arial";
+
+  // Quebra o título em linhas que cabem na largura.
+  const maxWidth = width - 70;
+  const words = String(title).split(" ");
+  const lines = [];
+  let line = "";
+  words.forEach((word) => {
+    const test = line ? `${line} ${word}` : word;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  });
+  if (line) lines.push(line);
+
+  const lineHeight = 48;
+  const startY = height / 2 - ((lines.length - 1) * lineHeight) / 2;
+  lines.forEach((text, i) => ctx.fillText(text, width / 2, startY + i * lineHeight));
+
+  return canvas.toDataURL("image/png");
+}
+
+// Monta o menu dentro da cena (um plano clicável por experiência).
+// Selecionável por gaze+dwell (celular/headset), mouse (desktop) e laser (controle).
+function buildVrMenu(items) {
+  if (!vrMenu) return;
+  while (vrMenu.firstChild) {
+    vrMenu.removeChild(vrMenu.firstChild);
+  }
+
+  const cols = 2;
+  const colGap = 1.04;
+  const rowGap = 0.46;
+  const btnW = 0.96;
+  const btnH = 0.38;
+
+  items.forEach((item, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = (col - (cols - 1) / 2) * colGap;
+    const y = (1 - row) * rowGap;
+
+    const button = document.createElement("a-entity");
+    button.setAttribute("class", "menu-item");
+    button.setAttribute("geometry", `primitive: plane; width: ${btnW}; height: ${btnH}`);
+    // Material via objeto (não string): o data URL tem ";" e "," que quebrariam o parser.
+    button.setAttribute("material", {
+      shader: "flat",
+      src: makeLabelTexture(item.title),
+      transparent: true,
+      side: "double"
+    });
+    button.setAttribute("position", `${x} ${y} 0`);
+    button.addEventListener("click", () => {
+      selectVideo(item);
+      hideMenu();
+    });
+    button.addEventListener("mouseenter", () => button.setAttribute("scale", "1.07 1.07 1.07"));
+    button.addEventListener("mouseleave", () => button.setAttribute("scale", "1 1 1"));
+    vrMenu.appendChild(button);
+  });
+
+  console.info("[Mergulho360] VR menu built", items.length);
+}
+
+function showMenu() {
+  if (vrMenu) vrMenu.setAttribute("visible", true);
+  if (vrMenuToggle) vrMenuToggle.setAttribute("visible", false);
+}
+
+function hideMenu() {
+  if (vrMenu) vrMenu.setAttribute("visible", false);
+  if (vrMenuToggle) vrMenuToggle.setAttribute("visible", true);
+}
+
 function resolveSource(item) {
   if (item.sourceType === "LocalFile" && item.localFileName) {
     return `public/videos/${item.localFileName}`;
@@ -222,6 +332,11 @@ function autoSelectFirst() {
 
 const catalog = await loadCatalog();
 renderCatalog(catalog);
+
+// Botão "Menu" (dentro do VR) reabre o menu enquanto um vídeo toca.
+if (vrMenuToggle) {
+  vrMenuToggle.addEventListener("click", showMenu);
+}
 
 if (scene && scene.hasLoaded) {
   autoSelectFirst();
