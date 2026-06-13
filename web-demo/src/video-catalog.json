@@ -47,6 +47,18 @@
       "thumbnailName": "recifes-placeholder.png",
       "durationLabel": "4 min",
       "isEnabled": true
+    },
+    {
+      "id": "oceano-teste",
+      "title": "Oceano — Mar Vermelho",
+      "description": "Mergulho 360 em recife do Mar Vermelho (clipe de teste, 30 s).",
+      "category": "Teste",
+      "sourceType": "LocalFile",
+      "localFileName": "oceano.mp4",
+      "streamingUrl": "",
+      "thumbnailName": "",
+      "durationLabel": "30 s",
+      "isEnabled": true
     }
   ]
 }

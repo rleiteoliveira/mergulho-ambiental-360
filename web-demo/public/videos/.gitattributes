@@ -1,0 +1,4 @@
+# Este clipe de teste precisa ser servido direto pelo GitHub Pages.
+# O Pages NÃO serve arquivos via Git LFS, então guardamos como blob normal
+# (sobrescreve a regra "*.mp4 filter=lfs" do .gitattributes da raiz).
+oceano.mp4 -filter -diff -merge
